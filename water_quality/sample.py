@@ -9,7 +9,7 @@ class Observation:
     value: Any
 
 def inspect_record(raw: dict[str, Any]) -> dict[str, Any]:
-    """Validate and normalize one source observation without losing its provenance."""
+    """校验并规范化一条来源观测，同时保留来源信息。"""
     required = ("source", "key", "revision", "value")
     missing = [name for name in required if name not in raw]
     if missing:
