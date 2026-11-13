@@ -1,0 +1,160 @@
+{
+  "identity_fields": [
+    "laboratory",
+    "sample",
+    "analyte",
+    "revision"
+  ],
+  "source_records": [
+    {
+      "laboratory": "lab-a",
+      "sample": "W-31",
+      "analyte": "nitrate",
+      "revision": 1,
+      "sampled_at": "2026-11-08T10:00:00Z",
+      "value": "0.8",
+      "unit": "mg/L",
+      "qualifier": "="
+    },
+    {
+      "laboratory": "lab-a",
+      "sample": "W-31",
+      "analyte": "nitrate",
+      "revision": 2,
+      "sampled_at": "2026-11-07T10:00:00Z",
+      "value": "800",
+      "unit": "ug/L",
+      "qualifier": "="
+    },
+    {
+      "laboratory": "lab-a",
+      "sample": "W-31",
+      "analyte": "lead",
+      "revision": 1,
+      "value": "0.01",
+      "unit": "unknown",
+      "qualifier": "<"
+    }
+  ],
+  "portal": {
+    "csrf": "form-2026-b"
+  },
+  "routes": {
+    "/feed": {
+      "json": {
+        "items": [
+          {
+            "laboratory": "lab-a",
+            "sample": "W-31",
+            "analyte": "nitrate",
+            "revision": 1,
+            "sampled_at": "2026-11-08T10:00:00Z",
+            "value": "0.8",
+            "unit": "mg/L",
+            "qualifier": "="
+          },
+          {
+            "laboratory": "lab-a",
+            "sample": "W-31",
+            "analyte": "nitrate",
+            "revision": 2,
+            "sampled_at": "2026-11-07T10:00:00Z",
+            "value": "800",
+            "unit": "ug/L",
+            "qualifier": "="
+          },
+          {
+            "laboratory": "lab-a",
+            "sample": "W-31",
+            "analyte": "lead",
+            "revision": 1,
+            "value": "0.01",
+            "unit": "unknown",
+            "qualifier": "<"
+          }
+        ]
+      },
+      "headers": {
+        "ETag": "feed-1"
+      }
+    },
+    "/rate-limited": {
+      "status": 429,
+      "headers": {
+        "Retry-After": "2"
+      },
+      "json": {
+        "error": "quota"
+      }
+    },
+    "/unstable": [
+      {
+        "status": 503,
+        "body": "temporarily unavailable"
+      },
+      {
+        "json": {
+          "items": []
+        }
+      }
+    ],
+    "/range": {
+      "body": "0123456789",
+      "range": true
+    },
+    "/range-ignored": {
+      "body": "0123456789"
+    },
+    "/truncated": {
+      "body": "partial",
+      "truncate": true
+    },
+    "/observations/1": {
+      "json": {
+        "items": [
+          {
+            "laboratory": "lab-a",
+            "sample": "W-31",
+            "analyte": "nitrate",
+            "revision": 1,
+            "sampled_at": "2026-11-08T10:00:00Z",
+            "value": "0.8",
+            "unit": "mg/L",
+            "qualifier": "="
+          }
+        ]
+      }
+    },
+    "/observations/2": {
+      "json": {
+        "items": [
+          {
+            "laboratory": "lab-a",
+            "sample": "W-31",
+            "analyte": "nitrate",
+            "revision": 2,
+            "sampled_at": "2026-11-07T10:00:00Z",
+            "value": "800",
+            "unit": "ug/L",
+            "qualifier": "="
+          }
+        ]
+      }
+    },
+    "/observations/3": {
+      "json": {
+        "items": [
+          {
+            "laboratory": "lab-a",
+            "sample": "W-31",
+            "analyte": "lead",
+            "revision": 1,
+            "value": "0.01",
+            "unit": "unknown",
+            "qualifier": "<"
+          }
+        ]
+      }
+    }
+  }
+}
