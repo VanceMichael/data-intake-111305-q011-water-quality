@@ -1,17 +1,17 @@
 [
   {
-    "name": "identity_correction",
-    "situation": "更正改变采样时间或检测项",
-    "observable": "当前解释更新，历史复测依据不被覆盖"
+    "name": "name",
+    "situation": "situation",
+    "observable": "observable"
   },
   {
-    "name": "unit_quarantine",
-    "situation": "未知单位及小于检出限",
-    "observable": "不得当普通确定值进入阈值"
+    "name": "name",
+    "situation": "situation",
+    "observable": "observable"
   },
   {
-    "name": "capture_projection_crash",
-    "situation": "保存原文后进程终止",
-    "observable": "恢复后不遗漏结构化处理"
+    "name": "name",
+    "situation": "situation",
+    "observable": "observable"
   }
 ]

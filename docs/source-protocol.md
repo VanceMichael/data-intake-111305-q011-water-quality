@@ -18,6 +18,8 @@
 
 ## 领域样例
 
-- `identity_correction`：更正改变采样时间或检测项；业务侧关注当前解释更新，历史复测依据不被覆盖。
-- `unit_quarantine`：未知单位及小于检出限；业务侧关注不得当普通确定值进入阈值。
-- `capture_projection_crash`：保存原文后进程终止；业务侧关注恢复后不遗漏结构化处理。
+- `name`：situation；业务侧关注observable。
+- `name`：situation；业务侧关注observable。
+- `name`：situation；业务侧关注observable。
+
+另外提供 `/rate-limited`、`/unstable`、`/range`、`/range-ignored`、`/truncated`、`/observations/1`、`/observations/2`、`/observations/3`。响应内容和版本由场景文件逐项声明，便于核对实际收到的来源资料。
