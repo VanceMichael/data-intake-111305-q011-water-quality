@@ -6,3 +6,16 @@ dependencies = []
 
 [tool.unittest]
 start-directory = "tests"
+
+[build-system]
+requires = ["setuptools==80.9.0", "wheel==0.45.1"]
+build-backend = "setuptools.build_meta"
+
+[tool.setuptools]
+packages = ["water_quality", "water_quality.fixtures"]
+
+[tool.setuptools.package-dir]
+"water_quality.fixtures" = "fixtures"
+
+[tool.setuptools.package-data]
+"water_quality.fixtures" = ["*.json"]

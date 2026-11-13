@@ -8,7 +8,13 @@ from urllib.parse import parse_qs, urlsplit
 
 
 def load_scenario(path=None):
-    return json.loads((Path(path) if path else Path(__file__).parents[1] / "fixtures" / "origin.json").read_text(encoding="utf-8"))
+    if path is not None:
+        scenario = Path(path)
+    else:
+        scenario = Path(__file__).parent / "fixtures" / "origin.json"
+        if not scenario.is_file():
+            scenario = Path(__file__).parents[1] / "fixtures" / "origin.json"
+    return json.loads(scenario.read_text(encoding="utf-8"))
 
 
 class Origin(ThreadingHTTPServer):

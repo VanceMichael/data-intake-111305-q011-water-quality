@@ -8,3 +8,6 @@ __pycache__/
 *.sqlite3
 *.sqlite3-*
 .runtime/
+build/
+dist/
+*.egg-info/

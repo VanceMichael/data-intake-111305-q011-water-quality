@@ -4,10 +4,17 @@
 
 ## 运行环境
 
-使用 Python 3.11 及以上，依赖均为标准库；SQLite 由 Python 自带。时区资料使用运行环境内的系统数据库。运行过程不安装依赖，也不下载数据。本地来源服务器和接收程序在同一进程环境中即可运行。
+使用 Python 3.11 及以上，业务运行依赖均为标准库；SQLite 由 Python 自带。时区资料使用运行环境内的系统数据库。运行过程不安装依赖，也不下载数据。本地来源服务器和接收程序在同一进程环境中即可运行。
+
+构建工具及其传递依赖精确锁定在 `requirements-build.txt`。首次准备开发环境时先执行下面命令；之后测试、构建和演示均可离线运行，不在运行命令中安装包。
+
+```sh
+python3 -m pip install -r requirements-build.txt
+```
 
 ```sh
 python3 -m unittest discover -s tests -v
+python3 -m build --wheel --no-isolation
 python3 -m compileall -q water_quality tests
 python3 -m water_quality demo
 ```
@@ -31,3 +38,7 @@ python3 -m water_quality capture --base-url http://127.0.0.1:实际端口 --arch
 ## 开发资料
 
 来源协议见 `docs/source-protocol.md`，领域观察关系见 `tests/test_source_contract.py`。`fixtures/business_cases.json` 保存业务侧关注的交错情况及可观察口径；基础版测试验证的是原始采集和协议，不代表业务处理已经具备这些能力。所有条目、机构、文件内容和门户回执均为本地合成资料，不包含真实用户身份。
+
+## Wheel 分发
+
+构建产物位于 `dist/`，包含 `water_quality` 和命名空间内的合成来源 JSON。安装 wheel 后，即使当前目录不是源码目录，也可执行 `python3 -m water_quality demo`。提供 `serve --scenario` 时仍以指定文件为准，找不到指定文件会直接报错，不回退到默认资料。
